@@ -34,17 +34,11 @@ window.snowScriptLoaded = true;
     document.body.appendChild(canvas);
   };
 
-  script("gpu-browser.min.js").then(() => {
-    audio("christmas");
-    audio("blizzard");
-    canvas();
-    script("script.js");
-  });
-
-  const menu = document.querySelector("[data-cy=Header_Menu_RightSide");
-  const button = document.createElement("button");
-  button.id = "snow-button";
-  button.innerHTML = `
+  const menu = () => {
+    const menu = document.querySelector("[data-cy=Header_Menu_RightSide");
+    const button = document.createElement("button");
+    button.id = "snow-button";
+    button.innerHTML = `
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="-6 -6 459.421 459.421">
       <path d="M453.421,275.252c0,57.266-46.141,103.882-103.186,104.8c-0.662-7.759-2.917-15.376-6.713-22.32h5.011
         c45.473,0,82.475-36.994,82.475-82.479c0-45.473-37.002-82.47-82.475-82.47c-5.104,0-10.386,0.514-15.703,1.529l-13.438,2.577
@@ -87,53 +81,65 @@ window.snowScriptLoaded = true;
         c1.261-0.388,2.293-1.297,2.835-2.494c0.547-1.193,0.555-2.572,0.021-3.771L339.297,367.532z"/>
     </svg>  
   `;
-  button.onclick = () =>
-    toggle((state) => {
-      button.className = state;
-      const isTransitioning = state === "starting" || state === "stopping";
-      button.disabled = isTransitioning ? "disabled" : "";
-    });
-  menu.appendChild(button);
+    button.onclick = () =>
+      toggle((state) => {
+        button.className = state;
+        const isTransitioning = state === "starting" || state === "stopping";
+        button.disabled = isTransitioning ? "disabled" : "";
+      });
+    menu.appendChild(button);
+  };
 
-  const style = document.createElement("style");
-  style.innerText = `
-    #canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 1000;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 10s ease-in-out;
-    }
-    #canvas.on { opacity: 1; }
-    #snow-button {
-      display: flex;
-      align-items: center;
-      background: none;
-      border: none;
-      margin: 0 0 0 0.7rem;
-      padding: 0;
-      cursor: pointer;
-      color: var(--menuForeground, '#fff');
-      transition: color 1s ease-in-out;
-    }
-    #snow-button:disabled { cursor: not-allowed; }
-    #snow-button:hover:not(:disabled) { opacity: 0.7; }
-    #snow-button.starting { color: yellow; }
-    #snow-button.running { color: lime; }
-    #snow-button.stopping { color: yellow; }
-    #snow-button svg {
-      fill: currentColor;
-      stroke: currentColor;
-      stroke-width: 6px;      
-      height: 1.4rem;
-      margin-top: 0.2rem;
-    }
-  `;
-  document.head.appendChild(style);
+  const css = () => {
+    const style = document.createElement("style");
+    style.innerText = `
+      #canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 10s ease-in-out;
+      }
+      #canvas.on { opacity: 1; }
+      #snow-button {
+        display: flex;
+        align-items: center;
+        background: none;
+        border: none;
+        margin: 0 0 0 0.7rem;
+        padding: 0;
+        cursor: pointer;
+        color: var(--menuForeground, '#fff');
+        transition: color 1s ease-in-out;
+      }
+      #snow-button:disabled { cursor: not-allowed; }
+      #snow-button:hover:not(:disabled) { opacity: 0.7; }
+      #snow-button.starting { color: yellow; }
+      #snow-button.running { color: lime; }
+      #snow-button.stopping { color: yellow; }
+      #snow-button svg {
+        fill: currentColor;
+        stroke: currentColor;
+        stroke-width: 6px;      
+        height: 1.4rem;
+        margin-top: 0.2rem;
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
+  script("gpu-browser.min.js").then(() => {
+    css();
+    audio("christmas");
+    audio("blizzard");
+    canvas();
+    script("snow.js");
+    menu();
+  });
 }
 
 console.log(
