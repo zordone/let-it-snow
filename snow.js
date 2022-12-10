@@ -14,8 +14,6 @@ const ACCELERATION = 0.005;
 const SMALL_RATIO = 0.3;
 const TRANSITION_TIME = 18_000;
 
-// ---
-
 // setup canvas
 const canvas = document.getElementById("canvas");
 canvas.width = WIDTH;
@@ -228,20 +226,3 @@ const toggle = (listener) => {
     start(listener);
   }
 };
-
-// document.body.onclick = () => {
-//   console.log("click");
-//   if (state === State.Running) {
-//     stop();
-//   } else if (state === State.Stopped) {
-//     start();
-//   }
-// };
-
-// document.body.ondblclick = () => {
-//   if (document.fullscreenElement) {
-//     document.exitFullscreen();
-//   } else {
-//     document.body.requestFullscreen();
-//   }
-// };
