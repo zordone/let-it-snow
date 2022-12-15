@@ -1,11 +1,11 @@
 # Let it Snow!
 
-Just a fun little script to make is snow on a website, especially on our own.
+Just a fun little script to make it snow on a website, especially on our own.
 
 ## Usage
 
-- Open up any of our A1 websites, preferably in Chrome.
-- Open the devtools console (⎇⌘J).
+- Open up any of our A1 websites like [HMN](https://hmnow.com/), preferably in Chrome.
+- Open the devtools console (`⎇⌘J`).
 - Copy the little loader script below.
 - Paste it in the console and press enter.
 - As the logged message will tell you too:
