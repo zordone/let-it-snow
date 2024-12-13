@@ -4,13 +4,13 @@ Just a fun little script to make it snow on a website, especially on our own.
 
 ## Usage
 
-- Open up any of our A1 websites like [HMN](https://hmnow.com/), preferably in Chrome.
+- Open up any of our A1 websites like [H+](https://www.hallmarkplus.com/), preferably in Chrome.
 - Open the devtools console (`⎇⌘J`).
 - Copy the little loader script below.
 - Paste it in the console and press enter.
 - As the logged message will tell you too:
   > Make sure you have your headphones on.
-  > Close the devtools, then click the snow CLOUD 🌨 button in the menu.
+  > Close the devtools, then click the snowflake ❄️ button in the menu.
   >
   > Happy Holidays! 🎄
 
@@ -20,7 +20,7 @@ Since the extra menu item is just hacked into the menu, it will quickly disappea
 
 ## Script
 
-This little loader script will just load the main script from this github repo.
+This little loader script will just load the main script from this GitHub repo.
 
 ```
 d=document;s=d.createElement("script");s.src="https://zordone.github.io/let-it-snow/setup.js";d.body.appendChild(s);null;

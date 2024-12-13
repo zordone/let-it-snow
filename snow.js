@@ -79,7 +79,7 @@ const initFlakes = () => {
   });
 };
 
-const gpu = new GPU();
+const gpu = new GPU.GPU();
 
 const gpuMove = gpu
   .createKernel(function (flakes, flakeProps, deltaTime, wind) {
